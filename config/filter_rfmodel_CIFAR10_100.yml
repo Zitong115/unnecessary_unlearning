@@ -1,0 +1,70 @@
+# Data
+dataset_path: "../dataset"
+model_save_path: "../models"
+log_path: "../log/20240904"
+attack_path: "../MIA/attack"
+
+# Log
+log_appendix: "_filter_retrain_cmp"
+
+# Device
+device: "cuda:0"
+
+# Dataset and Model
+dataset: "CIFAR10" # "MNIST", "CIFAR10", "CIFAR100", "Imagenet"
+model: "ResNet-18" # "2-layer-CNN", "ResNet-34"
+model_pretrained: true # uneffective in n-layer-CNN
+
+# Learning
+original_training_exp: false
+training_test_split: 0.1 # unused
+# where to read the original model / model_load_path
+model_original_path: false
+learning_rate: 0.0001
+batch_size: 128
+epochs: 60
+
+# Filter experiment
+unlearning_request_filter_exp: true
+filter_method:
+  - "rfmodel"
+  - "clustering"
+  - "confidence"
+  - "curvature"
+eval_filtered_model: true
+# model_clustering_path: "../models/MNIST-2-layer-CNN-Random-0.1-model/epoch60-clustering.pt"
+score_thres_dict:
+  "clustering": -3
+  "confidence": -3
+  "curvature": -3
+
+# Unlearning/retraining
+retraining_exp: false
+# where to read the retrained model
+# model_retrain_path: "../models/CIFAR10-ResNet-18-Random-100-model/epoch20-NoFilter.pt"
+# Random, clustering, confidence, curvature, representation
+unlearning_data_selection: "Random"
+unlearning_proportion: 100
+unlearning_idx: -1
+eval_retrained_model: true
+
+# Show data distribution experiment
+distribution_mining_exp: false
+model_load_path: None
+statistic_path: "/home/wamdm/lizitong/UnnecessaryUnlearning/distribution_statistics"
+distribution_choice:
+  - "clustering"
+  - "confidence"
+  - "curvature"
+# Random, clustering, confidence, curvature, representation
+# unlearning_data_selection: "Random"
+
+# SISA
+SISA_exp: false
+
+# Hessian
+Hessian_unlearning_exp: false
+
+# Verification
+verification_exp: false
+shadow_pretrained_verification: false
