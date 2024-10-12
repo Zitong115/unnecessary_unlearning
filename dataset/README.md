@@ -1,1 +1,1 @@
-i
+This is an empty file.
