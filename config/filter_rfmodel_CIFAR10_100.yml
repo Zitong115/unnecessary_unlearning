@@ -1,7 +1,7 @@
 # Data
 dataset_path: "../dataset"
 model_save_path: "../models"
-log_path: "../log/20240904"
+log_path: "../log/"
 attack_path: "../MIA/attack"
 
 # Log
